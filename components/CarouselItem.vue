@@ -1,7 +1,9 @@
 <template>
-    <div class="carousel-item" v-show="currentSlide === index">
-        <img :src="slide" />
-    </div>
+    <Transition name="carousel">
+        <div class="carousel-item" v-show="currentSlide === index">
+            <img :src="slide" />
+        </div>
+    </Transition>
 </template>
 
 <script setup>
@@ -15,5 +17,15 @@
         left: 0;
         right: 0;
         bottom: 0;
+    }
+
+    .carousel-enter-active,
+    .carousel-leave-active {
+        transition: all 0.7s ease;
+    }
+    .carousel-enter-from,
+    .carousel-leave-to {
+        opacity: 0;
+        transform: translateX(100%);
     }
 </style>
