@@ -1,6 +1,7 @@
 <template>
   <div class="carousel">
     <div class="carousel-inner">
+      <CarouselIndicators :indicators="slides.length" :activeIndicator="currentSlide" @updateActiveSlide="setCurrentSlide" />
       <CarouselItem v-for="(slide, index) in slides" :slide="slide" :key="`item-${index}`" :current-slide="currentSlide" :index="index" />
     </div>
   </div>
@@ -16,10 +17,14 @@
 
   const nextSlide = (count) => {
     currentSlide.value = (currentSlide.value + 1) % slides.length;
-    console.log(currentSlide.value);
   };
 
-  useInterval(5000, {callback: nextSlide})  
+  const setCurrentSlide = (index) => {
+    currentSlide.value = index;
+    console.log(index)
+  };
+
+  useInterval(3000, {callback: nextSlide})  
 </script>
 
 <style scoped>

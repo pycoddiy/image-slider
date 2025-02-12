@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-    const { slide } = defineProps(['slide', 'currentSlide', 'index'])
+    const { slide, currentSlide, index } = defineProps(['slide', 'current-slide', 'index'])
 </script>
 
 <style scoped>
@@ -21,9 +21,14 @@
 
     .carousel-enter-active,
     .carousel-leave-active {
-        transition: all 0.7s ease;
+        transition: all 0.5s ease-in;
     }
-    .carousel-enter-from,
+
+    .carousel-enter-from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
     .carousel-leave-to {
         opacity: 0;
         transform: translateX(100%);
